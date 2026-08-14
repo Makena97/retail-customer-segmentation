@@ -1,0 +1,147 @@
+1. Business Problem Definition
+1.1 Problem Statement
+Building on the Module 1 Vision Document, BrightCart’s core business problem is inefficient allocation of marketing, customer-retention, and operational resources caused by limited understanding of customer purchasing behaviour. BrightCart serves customers with different levels of recency, purchase frequency, monetary value, transaction volume, and product preferences. Treating these customers as a single population can result in broad strategies that do not reflect meaningful differences in customer value and behaviour.
+The primary objective is to improve BrightCart’s operational efficiency by identifying and understanding distinct customer segments based on observed purchasing behaviour. The project will use the UCI Online Retail II dataset, which contains 1,067,371 real transaction records from a UK-based online retailer (Chen, 2019). RFM and behavioural features will support customer segmentation. Predictive inactivity/churn analysis and demand analysis will provide supporting insights, while prescriptive analytics will translate findings into segment-specific recommendations.
+1.2 Problem-Identification Framework
+Stage	Application to BrightCart
+Define	Inefficient allocation of marketing, retention, and operational resources.
+Gather Data	UCI Online Retail II transaction data.
+Analyse	Assess purchasing behaviour and create customer-level RFM and behavioural features.
+Identify Root Cause	No systematic workflow for converting transactions into actionable customer segments.
+Set Objectives	Develop validated customer segments and decision-support insights.
+
+2. Root Cause Analysis
+2.1 Five Whys
+Problem BrightCart’s marketing and operational resources are not allocated efficiently.
+Why 1? Customers with substantially different purchasing behaviours may receive insufficiently differentiated strategies.
+Why 2? BrightCart does not have clearly defined customer groups based on purchasing behaviour.
+Why 3? Transaction data is not systematically transformed into customer-level behavioural profiles.
+Why 4? There is no integrated workflow connecting data preparation, RFM analysis, clustering, and business decision support.
+Why 5? BrightCart lacks a structured customer analytics capability that converts transaction data into actionable customer intelligence.
+Root-cause finding: BrightCart lacks a systematic, data-driven customer segmentation process that converts transactional data into actionable customer intelligence.
+2.2 KPIs Linked to the Root Cause
+•	Revenue contribution by customer segment
+•	Average monetary value and purchase frequency by segment
+•	Customer recency and inactivity/churn risk
+•	Segment size and stability
+•	Demand analysis/forecast error
+•	Data-quality exception rate and dashboard usability
+3. Business Analytics Project Overview
+3.1 Objectives and Scope
+The project will:
+1.	Validate and prepare the Online Retail II transaction dataset.
+2.	Develop customer-level RFM and behavioural features.
+3.	Identify and validate meaningful customer segments using K-Means clustering.
+4.	Profile segment characteristics, size, and business value.
+5.	Develop predictive analysis of customer inactivity/churn risk.
+6.	Analyse demand patterns associated with customer segments.
+7.	Translate results into segment-specific marketing, retention, and operational recommendations.
+8.	Deliver an interactive Power BI decision-support dashboard.
+9.	Apply privacy, fairness, explainability, and governance controls.
+The project excludes real-time customer tracking, automated marketing campaigns, automated exclusion or pricing decisions, collection of new sensitive demographic information, and direct production-system integration. This boundary keeps the solution focused on responsible decision support.
+3.2 Data and Analytical Methods
+Data category	Example fields	Purpose
+Transaction	InvoiceNo, InvoiceDate	Purchase activity and time patterns
+Customer	CustomerID	Customer-level aggregation
+Product	StockCode, Description	Product behaviour and preferences
+Quantity	Quantity	Transaction volume
+Financial	UnitPrice	Monetary value
+Geography	Country	Descriptive/group-level analysis
+
+Data preparation will address missing customer identifiers, cancelled transactions, duplicates, invalid quantities or prices, and unusual observations. Descriptive analytics will establish RFM measures; K-Means will provide the primary segmentation method; predictive modelling will examine inactivity/churn risk; time-based analysis will examine demand; and prescriptive analytics will translate results into actionable segment strategies.
+3.3 Technical Architecture
+The architecture follows the technical stack established in Module 1 and provides traceability from source transactions to business decisions.
+Layer	Technology	Function
+Source	UCI Online Retail II	Real transaction data
+Storage	Azure Data Lake Storage	Secure raw and processed data storage
+Ingestion	Python / Azure data pipeline	Data loading and controlled processing
+Preparation	Python, Pandas, NumPy	Cleaning, transformation, feature engineering
+Segmentation	Python, Scikit-learn	RFM analysis and K-Means clustering
+Predictive analysis	Python, Scikit-learn	Inactivity/churn analysis
+Explainability	SHAP / model-specific methods	Interpret predictive outputs
+Visualization	Power BI	Interactive stakeholder dashboard
+Versioning	Git/GitHub and DVC	Code, documentation, data/model tracking
+Deployment	Azure	Controlled hosting and delivery
+
+Architecture Flow
+Stage 1	→	Stage 2	→	Stage 3
+UCI Online Retail II	→	Azure Data Lake	→	Python / Pandas / NumPy
+Customer Features + RFM	→	K-Means Segmentation	→	Predictive Inactivity/Churn
+Demand Analysis	→	Prescriptive Recommendations	→	Power BI Dashboard
+
+4. Agile Methodology and Delivery Plan
+The project will use an iterative Agile approach based on short sprints, continuous validation, stakeholder feedback, and incremental delivery. This reduces the risk of discovering major data, modelling, or usability problems only at the end of the project.
+Sprint	Focus	Key deliverables
+1	Foundation and data assessment	GitHub repository, environment, data dictionary, data-quality assessment
+2	Data preparation and RFM	Cleaning pipeline, processed dataset, RFM features
+3	Customer segmentation	K-Means models, cluster evaluation, segment profiles
+4	Predictive and prescriptive analytics	Inactivity analysis, demand insights, recommendations
+5	Dashboard and validation	Power BI dashboard, XAI/fairness assessment, final documentation
+
+4.1 GitHub Project Board
+The GitHub Kanban board will use Backlog → Ready → In Progress → Review → Done. Tickets will be mapped to the repository structure established in Module 1.
+Ticket	Sprint	Output
+Create repository and environment	1	GitHub structure and requirements.txt
+Create data dictionary and quality report	1	Preliminary documentation
+Clean transactions and calculate RFM	2	Processed customer dataset
+Evaluate K-Means configurations	3	Validated segmentation
+Profile customer segments	3	Segment profiles
+Develop inactivity model and demand analysis	4	Predictive and demand outputs
+Develop segment recommendations	4	Prescriptive outputs
+Build Power BI dashboard	5	Interactive dashboard
+Complete XAI, fairness and final validation	5	Responsible-AI documentation
+
+5. Implementation and Communication Plan
+Stakeholder	Interest / responsibility	Communication
+Senior Management	Business direction and outcomes	Sprint reviews
+Marketing	Customer targeting and segment usefulness	Segment reviews
+Retention Team	Inactivity/churn insights	Predictive-model reviews
+Operations / Inventory	Resource and demand planning	Operational reviews
+Data Analytics	Development and validation	Weekly technical meetings
+IT / Cloud	Infrastructure and deployment	Technical reviews
+Privacy / Compliance	Data governance and ethical review	Governance checkpoints
+
+5.1 Technical RAID Log
+Type	Item	Impact	Mitigation / Action
+Risk	Missing CustomerID	Reduced customer-level analysis	Quantify missingness and document treatment
+Risk	Cancelled transactions	Distorted RFM values	Define and document transaction-cleaning rules
+Risk	Poor cluster separation	Weak segments	Compare K values and validation metrics
+Risk	Privacy exposure	Compliance/reputational risk	Minimize identifiers and restrict access
+Risk	Model bias	Potential unfair outcomes	Conduct fairness/error analysis
+Assumption	Historical data represents useful behaviour	May affect generalizability	Use temporal validation where appropriate
+Issue	Historical rather than real-time data	Limited real-time decisions	State limitation clearly
+Dependency	Azure environment	Pipeline delays	Configure environment early
+Dependency	Power BI availability	Dashboard delay	Begin dashboard design during Sprint 3
+
+6. Privacy, Fairness and Compliance Requirements
+6.1 Data Privacy Plan
+The project will apply data minimization, purpose limitation, controlled access, pseudonymization, secure storage, and appropriate retention. Customer identifiers will only be used when required for analytical aggregation. Stakeholder dashboards will prioritize aggregated information rather than exposing unnecessary customer-level identifiers. Access to raw and processed data will be role-based, and data-processing activities will be documented for traceability.
+6.2 Fairness Requirements
+The Online Retail II dataset contains limited protected demographic information; therefore, comprehensive demographic fairness testing is not possible with the available data. This limitation will be explicitly documented. The project will avoid using sensitive characteristics as segmentation variables and will examine whether predictive errors or outcomes differ across relevant groups where appropriate information exists.
+Where suitable group information becomes available for the predictive component, Demographic Parity and Equalized Odds may be evaluated alongside group-level precision, recall, and error rates. The purpose is to identify potentially disproportionate outcomes rather than impose a fairness criterion that is inappropriate for the business context.
+6.3 Explainability Framework
+•	K-Means: explain clusters using RFM distributions, cluster centroids, feature comparisons, and segment profiles.
+•	Predictive models: use SHAP or model-specific feature importance and error analysis.
+•	Dashboard: distinguish observed historical measures, predictions, and recommendations.
+•	Business users will receive explanations in non-technical language and retain responsibility for decisions.
+6.4 Regulatory Compliance Checklist
+Requirement	Project control
+Data protection principles	Purpose limitation, minimization, security, accuracy, and retention controls
+Privacy	Restrict identifiers; use pseudonymized or aggregated outputs
+Transparency	Document methods, assumptions, limitations, and model outputs
+Accountability	Assign analytical and business ownership
+Fairness	Conduct appropriate group/error analysis and document limitations
+Human oversight	No autonomous consequential customer decisions
+Retention	Retain information only for the approved analytical purpose
+
+GDPR/data-protection principles will provide the primary privacy reference where personal data is processed. CCPA and HIPAA are not treated as primary frameworks because the selected context is a retail project rather than a US consumer-law or healthcare implementation; obligations would be reassessed if scope or jurisdiction changes.
+7. Conclusion
+This Project Overview Report converts the Module 1 BrightCart vision into an executable delivery plan. The root-cause analysis demonstrates that the underlying business problem is not simply the absence of customer segmentation, but the lack of a systematic process for converting transaction data into actionable customer intelligence.
+The proposed architecture connects data ingestion, preparation, RFM feature engineering, K-Means segmentation, predictive analysis, demand analysis, prescriptive recommendations, and Power BI visualization. The Agile sprint plan provides incremental delivery, while the stakeholder plan and RAID log establish accountability and risk management. Privacy, fairness, explainability, and governance controls are embedded throughout the project.
+The intended outcome is a reproducible, responsible analytics capability that enables BrightCart to understand customer differences and make better-informed decisions about marketing, retention, and operational resource allocation.
+References
+Chen, D. (2019). Online Retail II [Dataset]. UCI Machine Learning Repository.
+Information Commissioner’s Office. (2026). A guide to the data protection principles.
+National Institute of Standards and Technology. (2023). Artificial intelligence risk management framework (AI RMF 1.0). U.S. Department of Commerce.
+
+

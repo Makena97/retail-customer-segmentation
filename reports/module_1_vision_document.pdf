@@ -1,0 +1,225 @@
+BrightCart Online Retail Customer Segmentation Analytics for Improving Retail Operational Efficiency
+
+1. Business Vertical and Problem Context
+Business Vertical: Retail
+This project focuses on BrightCart, an online retail business, with customer segmentation as the core business process requiring analytics. BrightCart serves customers with different purchasing frequencies, recency, spending levels, and product preferences. Treating these customers as one group can lead to inefficient allocation of marketing and operational resources and limit the organization's ability to develop targeted strategies.
+
+The core business problem is the lack of a data-driven understanding of distinct customer groups and their purchasing behaviour. BrightCart needs to identify customers with similar characteristics so management can allocate resources more effectively, develop appropriate retention strategies, and understand demand patterns.
+
+Customer segmentation will be the primary analytics objective. Descriptive analytics will be used to calculate Recency, Frequency, and Monetary (RFM) measures and identify purchasing patterns. Clustering, particularly K-Means, will then be evaluated to create meaningful customer segments. Predictive analytics will examine inactivity/churn risk and demand patterns within these segments, while prescriptive analytics will translate findings into segment-specific recommendations.
+Organizational Context
+For an online retailer, customers contribute different levels of revenue and exhibit different purchasing behaviours. A high-value frequent customer requires a different strategy from an occasional customer who has not purchased recently. A reliable segmentation solution can therefore help BrightCart move from a one-size-fits-all approach toward targeted decision-making, improving the allocation of marketing, retention, and operational resources.
+
+The project will use the Online Retail II dataset from the UCI Machine Learning Repository. It contains 1,067,371 real transaction records from a UK-based online retailer covering December 2009 to December 2011 (Chen, 2019). Variables include invoice number, product code, product description, quantity, invoice date, unit price, customer identifier, and country. The dataset substantially exceeds the 5,000-record requirement and provides appropriate transaction-level information for RFM analysis and customer segmentation. The project will use real rather than synthetic data and will focus on observed purchasing behaviour rather than sensitive personal characteristics.
+
+2. Vision, Goals and Ethical Principles
+Vision Statement
+To enable BrightCart to improve operational efficiency by using responsible customer segmentation analytics to identify distinct customer groups, understand their purchasing behaviour, and support targeted customer engagement, retention, and demand-planning decisions.
+Primary Business Objective
+To improve BrightCart’s operational efficiency by identifying and understanding distinct customer segments based on purchasing behaviour, enabling the business to allocate marketing, customer-retention, and operational resources more effectively.
+Measurable Project Goals
+The project will pursue the following goals:
+1.	Identify distinct customer segments by applying RFM analysis and clustering techniques to BrightCart’s transaction data.
+2.	Profile each customer segment using measurable characteristics such as recency, purchase frequency, monetary value, transaction volume, and product preferences.
+3.	Determine the business value of each segment by comparing customer contribution to revenue, purchasing activity, and overall transaction behaviour.
+4.	Predict customer inactivity risk within each segment to identify segments requiring greater retention attention.
+5.	Analyse demand patterns across customer segments to provide insights that can support inventory and operational planning.
+6.	Develop segment-specific business recommendations for marketing, customer retention, cross-selling, and resource allocation.
+7.	Evaluate the quality and reliability of the analytics solution using appropriate clustering validation, predictive-performance measures, data-quality checks, and ethical/fairness assessments.
+8.	Deliver an interactive dashboard that enables BrightCart stakeholders to explore customer segments, their characteristics, business value, and recommended actions.
+Analytics Approach
+The project will integrate three complementary forms of analytics:
+Descriptive analytics – What is happening?
+Customer transaction data will be analysed to identify purchasing patterns and create customer segments using RFM analysis and clustering.
+Predictive analytics – What is likely to happen?
+Predictive models will be used to investigate customer inactivity/churn risk and future demand patterns within identified customer segments.
+Prescriptive analytics – What should the organization do?
+The analytical findings will be translated into practical recommendations, such as segment-specific retention campaigns, customer engagement strategies, and demand-planning priorities.
+This creates the following analytical progression:
+Transaction Data → Customer Features → Customer Segmentation → Predictive Insights → Prescriptive Recommendations → Improved Operational Efficiency
+
+3. Ethical AI Vision and Fairness Objectives
+The project will use customer segmentation and predictive analytics as decision-support tools rather than autonomous decision-makers. The approach will emphasize fairness, transparency, accountability, privacy, and human oversight, consistent with the NIST AI Risk Management Framework (NIST, 2023).
+Key fairness objectives are to:
+1.	Avoid using protected characteristics as segmentation or prediction variables.
+2.	Assess whether model errors disproportionately affect relevant groups where appropriate data exists.
+3.	Prevent segment membership from being used to justify discriminatory treatment.
+4.	Clearly communicate limitations where demographic fairness cannot be fully assessed.
+5.	Require human review before consequential customer decisions are made..
+
+4. Users, Stakeholders and Ethical Oversight
+Users and Stakeholders
+Stakeholder	Role / Interest
+Senior Management	Owns strategic objectives and business outcomes
+Marketing Team	Uses segments for targeted customer engagement
+Customer-Retention Team	Develops retention strategies for relevant segments
+Operations Team	Uses insights to improve resource allocation
+Inventory Planning Team	Uses demand insights for planning
+Data Analytics Team	Develops, validates, and monitors analytical models
+IT / Cloud Team	Supports infrastructure, security, and deployment
+Privacy / Compliance Representative	Reviews appropriate data use and privacy risks
+Ethical Oversight
+An AI Ethics and Data Governance Review Group, comprising representatives from analytics, business operations, privacy/compliance, and IT/security, will review data usage, privacy controls, segmentation methodology, potential bias, explainability, model limitations, and appropriate use of predictions.
+5. Analytics Product and Technical Direction
+Proposed Analytics Product
+The proposed product will be an interactive BrightCart customer segmentation and retail decision-support dashboard.
+The product will provide:
+1.	Customer segment identification
+2.	Segment size and value
+3.	RFM profiles for each segment
+4.	Purchasing behaviour by segment
+5.	Product preferences by segment
+6.	Customer inactivity/churn risk
+7.	Demand trends
+8.	Segment-level performance indicators
+9.	Segment-specific business recommendations
+The product will enable stakeholders to move from simply asking "Who are our customers?" to answering "What should we do differently for each customer segment?"
+Example Business Outputs
+A high value, loyal segment may receive loyalty-focused retention strategies.
+A high value but declining segment may receive targeted re-engagement campaigns.
+Frequent low-value customers may be targeted with cross-selling and upselling strategies.
+Low-frequency customers may receive lower-cost promotional campaigns.
+These recommendations will be evaluated for business relevance and ethical risk rather than being implemented automatically.
+Proposed Technical Stack
+Project Phase	Technology	Purpose
+Data storage	Azure Data Lake Storage	Secure project data storage
+Data ingestion	Python	Dataset ingestion and processing
+Data preparation	Python, Pandas, NumPy	Cleaning and feature engineering
+Customer segmentation	Python, scikit-learn	RFM analysis and K-Means clustering
+Predictive modelling	Python, scikit-learn	Inactivity/churn prediction
+Demand forecasting	Python/time-series tools	Future demand analysis
+Explainability	SHAP / model interpretation techniques	Explain predictive outputs
+Visualization	Power BI	Stakeholder dashboard
+Version control	Git/GitHub	Code and documentation versioning
+Data/model versioning	DVC	Large data and model artefact tracking
+Deployment	Azure	Controlled hosting and delivery
+Proposed GitHub Repository Structure
+retail-customer-segmentation/
+│
+├── data/
+│   ├── raw/
+│   ├── processed/
+│   └── metadata/
+│
+├── notebooks/
+│   ├── 01_data_exploration/
+│   ├── 02_rfm_analysis/
+│   ├── 03_customer_segmentation/
+│   ├── 04_predictive_analysis/
+│   └── 05_demand_forecasting/
+│
+├── src/
+│   ├── data_preparation/
+│   ├── feature_engineering/
+│   ├── segmentation/
+│   ├── predictive_models/
+│   └── evaluation/
+│
+├── models/
+├── dashboards/
+├── reports/
+├── tests/
+├── docs/
+│
+├── requirements.txt
+├── README.md
+└── .gitignore
+
+6. Requirements, Risks and Constraints
+Functional Requirements
+The solution must:
+•	Ingest and validate the approved retail dataset.
+•	Clean and prepare transaction data.
+•	Create customer-level behavioural features.
+•	Calculate RFM measures.
+•	Develop and evaluate customer segments.
+•	Profile and interpret each segment.
+•	Develop predictive analysis for customer inactivity/churn.
+•	Analyse demand patterns.
+•	Generate segment-specific recommendations.
+•	Present results through an interactive dashboard.
+•	Document analytical assumptions and limitations.
+Non-Functional Requirements
+The solution should be:
+•	Reproducible: Results should be reproducible using documented code and data-processing procedures.
+•	Usable: Outputs should be understandable to non-technical stakeholders.
+•	Secure: Access to customer-level information should be controlled.
+•	Traceable: Analytical outputs should be traceable to source data and documented transformations.
+•	Maintainable: Code should follow a clear and modular repository structure.
+•	Scalable: The architecture should support larger datasets in future implementations.
+•	Transparent: Users should understand what the models do and do not predict.
+Key Risks and Constraints
+Potential project constraints include:
+•	Missing or incomplete customer identifiers.
+•	Cancelled transactions and unusual transaction values.
+•	Historical rather than real-time data.
+•	Limited demographic information.
+•	Potential changes in customer behaviour over time.
+•	Difficulty determining the optimal number of customer clusters.
+•	Risk of interpreting clusters as fixed customer identities.
+•	Limited ability to assess demographic fairness where protected-group data is unavailable.
+The project will address these limitations through data-quality checks, sensitivity analysis, appropriate validation techniques, clear documentation, and stakeholder review.
+
+7. Ethical Risk Register
+Ethical Risk	Potential Impact	Mitigation
+Bias in segmentation	Certain customer groups may be poorly represented or incorrectly classified	Evaluate segment characteristics and model performance
+Privacy violation	Customer information could be unnecessarily exposed	Data minimization, access controls, and pseudonymization
+Misuse of customer segments	Segments could be used to unfairly exclude customers	Establish acceptable-use guidelines
+Over-reliance on predictions	Managers may treat predictions as certain outcomes	Provide confidence/error information and human oversight
+Unfair targeting	Some customers could receive inappropriate or excessive marketing	Establish segment-specific targeting rules and monitoring
+Lack of transparency	Users may not understand how segments were created	Document RFM calculations, clustering methodology, and assumptions
+Regulatory non-compliance	Improper processing of personal data could create legal/reputational risk	Apply data governance and privacy review
+
+8. Quality, Documentation and Governance Standards
+Quality assurance will be incorporated throughout the project rather than only at the final modelling stage.
+Data quality checks will include missing-value analysis, duplicate detection, validation of transaction quantities and prices, cancelled-transaction assessment, customer-level reconciliation, and identification of unusual observations.
+The segmentation process will evaluate cluster quality using appropriate statistical measures and business interpretation. Different clustering configurations will be compared rather than selecting a solution solely because it produces a visually appealing result.
+Predictive models will be evaluated using appropriate performance measures and validated using methods that account for the temporal nature of transaction data where applicable. Explainability and error analysis will accompany model performance evaluation.
+Documentation Standards
+The project will maintain:
+•	Data dictionary
+•	Data-quality report
+•	Feature documentation
+•	Segmentation methodology
+•	Model documentation
+•	Model evaluation report
+•	Ethical risk register
+•	Decision log
+•	Dashboard documentation
+•	Project README
+•	Version history
+This documentation will provide traceability from the original transaction data through data preparation, segmentation, predictive modelling, and final recommendations.
+Versioning Strategy
+Git/GitHub will be used for source-code and documentation version control. A feature-branch workflow will be used during development, with tagged releases for major milestones.
+DVC (Data Version Control) will be used to track large datasets and model artefacts without storing large raw files directly in Git.
+Models will be versioned according to their:
+•	Training data period
+•	Feature set
+•	Algorithm
+•	Hyperparameters
+•	Performance results
+•	Fairness assessment
+•	Explainability assessment
+•	Approval status
+Data Governance
+The project will apply the principles of purpose limitation, data minimization, accuracy, storage limitation, security, and accountability. These principles are consistent with established data-protection guidance from the Information Commissioner's Office (ICO, 2026).
+Customer identifiers will be restricted to legitimate analytical requirements. Where customer-level information is displayed, pseudonymized or aggregated information will be preferred. Data will not be retained longer than necessary for the approved analytical purpose.
+
+9. Project Success Criteria
+The project will be considered successful if it produces:
+1.	Clearly differentiated and interpretable customer segments.
+2.	Evidence that the segments provide meaningful business insight.
+3.	Reliable predictive insights concerning customer inactivity and demand.
+4.	Actionable recommendations for each major customer segment.
+5.	An interactive dashboard suitable for business stakeholders.
+6.	Documented ethical safeguards and limitations.
+7.	Reproducible analytical workflows.
+8.	A technical foundation that can be extended through Modules 2–5 and the Final Project.
+The ultimate measure of success is not simply the accuracy of a clustering or predictive model. The project should demonstrate that customer segmentation can help the retailer make better-informed decisions about where to allocate marketing, retention, and operational resources.
+References
+Chen, D. (2019). Online Retail II [Dataset]. UCI Machine Learning Repository. https://archive.ics.uci.edu/dataset/502/online+retail+ii
+Information Commissioner's Office. (2026). A guide to the data protection principles. https://ico.org.uk/
+National Institute of Standards and Technology. (2023). Artificial intelligence risk management framework (AI RMF 1.0). U.S. Department of Commerce. https://doi.org/10.6028/NIST.AI.100-1
+
+
+

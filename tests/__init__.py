@@ -1,0 +1,3 @@
+"""
+BrightCart pipeline test suite.
+"""

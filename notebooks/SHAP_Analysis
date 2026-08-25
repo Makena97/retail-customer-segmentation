@@ -1,0 +1,60 @@
+import joblib
+import os
+
+os.makedirs("models", exist_ok=True)
+
+joblib.dump(
+    best_rf_model,
+    "C:/Users/kbnmi5985/OneDrive - PHASTAR/Documents/joblib.py"
+)
+
+print(
+    "Final Random Forest model saved successfully."
+)
+
+
+
+%pip install shap
+
+import pandas as pd
+import numpy as np
+
+import joblib
+import matplotlib.pyplot as plt
+
+# ---------------------------------------------------------
+# 1. Load model and data
+# ---------------------------------------------------------
+
+feature_names = [
+    "Recency_Days",
+    "Frequency",
+    "Monetary",
+    "Avg_Order_Value",
+    "Total_Quantity",
+    "Unique_Products",
+    "Tenure_Days"
+]
+
+joblib.dump(
+    feature_names,
+    "models/feature_names.joblib"
+)
+
+best_rf_model = joblib.load(
+    "C:/Users/kbnmi5985/OneDrive - PHASTAR/Documents/joblib.py"
+)
+
+feature_names = joblib.load(
+    "C:/Users/kbnmi5985/OneDrive - PHASTAR/Documents/joblib.py"
+)
+
+df = pd.read_csv(
+    "C:/Users/kbnmi5985/Downloads/customer_modeling_dataset.csv"
+)
+
+X = df[feature_names]
+y = df["Repeat_Purchase_90d"]
+
+print(X.head())
+print("Shape:", X.shape)

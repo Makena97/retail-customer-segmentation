@@ -12,3 +12,4 @@ fastapi
 uvicorn[standard]
 mlflow
 pytest
+streamlit

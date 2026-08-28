@@ -1,2 +1,2 @@
 # retail-customer-segmentation
-BrightCart customer segmentation analytics project using RFM analysis and K-Means clustering to improve marketing, retention, demand planning, and operational decision-making.
+BrightCart end-to-end customer analytics project combining data engineering, repeat-purchase prediction, explainable AI, fairness analysis, FastAPI deployment, monitoring, and MLOps.

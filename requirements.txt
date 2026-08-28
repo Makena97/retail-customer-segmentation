@@ -7,3 +7,7 @@ jupyter
 openpyxl
 scipy
 shap
+joblib
+fastapi
+uvicorn[standard]
+mlflow

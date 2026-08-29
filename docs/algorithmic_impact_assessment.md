@@ -95,7 +95,7 @@ The validation fairness sample contained:
 Baseline fairness measures included:
 
 - Demographic Parity Difference: 0.1094
-- Disparate Impact Ratio: 1.2685
+- Disparate Impact Ratio: 0.7883
 - Equal Opportunity Difference: 0.1203
 - Equalized Odds Difference: 0.1203
 

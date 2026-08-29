@@ -35,7 +35,7 @@ The baseline fairness assessment produced:
 | Fairness Metric | Baseline |
 |---|---:|
 | Demographic Parity Difference | 0.1094 |
-| Disparate Impact Ratio | 1.2685 |
+| Disparate Impact Ratio | 0.7883 |
 | Equal Opportunity Difference | 0.1203 |
 | Equalized Odds Difference | 0.1203 |
 | TPR Difference | 0.1203 |

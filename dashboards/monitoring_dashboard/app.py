@@ -300,13 +300,45 @@ st.caption(
 
 st.header("7. Monitoring Alerts")
 
-st.success("No production performance alerts recorded.")
+alert_data = pd.DataFrame({
+    "Monitoring Area": [
+        "Model Performance",
+        "Data Drift",
+        "Prediction Drift",
+        "Fairness / Bias Drift"
+    ],
+    "Current Status": [
+        "Within baseline thresholds",
+        "Awaiting production data",
+        "Awaiting production data",
+        "Exploratory baseline established"
+    ],
+    "Alert Level": [
+        "Normal",
+        "Pending",
+        "Pending",
+        "Monitor"
+    ],
+    "Required Action": [
+        "Continue monitoring",
+        "Compare production feature distributions with baseline",
+        "Monitor change in predicted repeat-purchase rate",
+        "Increase Non-UK sample and reassess fairness"
+    ]
+})
 
-st.info(
-    "Future alerts should be generated when performance, "
-    "drift, or fairness indicators exceed agreed thresholds."
+st.dataframe(
+    alert_data,
+    use_container_width=True,
+    hide_index=True
 )
 
+st.info(
+    "No production drift alerts are reported because sufficient "
+    "post-deployment observations have not yet accumulated. "
+    "This avoids presenting simulated monitoring results as "
+    "observed production evidence."
+)
 
 # ---------------------------------------------------------
 # Monitoring actions

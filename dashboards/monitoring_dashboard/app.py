@@ -237,11 +237,11 @@ fairness_data = pd.DataFrame({
         "Equalized Odds Difference"
     ],
     "Baseline Result": [
-        0.1094,
-        1.2685,
-        0.1203,
-        0.1203
-    ]
+    0.1094,
+    0.7883,
+    0.1203,
+    0.1203
+]
 })
 
 st.dataframe(

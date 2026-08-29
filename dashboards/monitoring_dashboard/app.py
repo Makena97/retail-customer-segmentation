@@ -102,17 +102,39 @@ performance_data = pd.DataFrame({
     ]
 })
 
+# Automatically assess each performance metric
+performance_data["Status"] = performance_data.apply(
+    lambda row: (
+        "Within Threshold"
+        if row["Baseline"] >= row["Monitoring Threshold"]
+        else "Review Required"
+    ),
+    axis=1
+)
+
 st.dataframe(
     performance_data,
     use_container_width=True,
     hide_index=True
 )
 
-st.caption(
-    "A material decline below the monitoring threshold "
-    "should trigger model investigation."
-)
+# Overall monitoring status
+if (performance_data["Status"] == "Review Required").any():
+    st.error(
+        "Performance Alert: At least one model metric "
+        "requires investigation."
+    )
+else:
+    st.success(
+        "Performance Status: All baseline metrics are "
+        "currently within the proposed monitoring thresholds."
+    )
 
+st.caption(
+    "Monitoring thresholds are proposed operational triggers. "
+    "A sustained decline below a threshold should initiate "
+    "model investigation rather than automatic retraining."
+)
 
 # ---------------------------------------------------------
 # Data drift
